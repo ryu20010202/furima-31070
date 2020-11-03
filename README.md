@@ -30,13 +30,13 @@
 | area_id      | integer       | null: false       |
 | day_id       | integer       | null: false       |
 | price        | integer       | null: false       |
-| image        | ActiveStorage |                   |
 | user         | references    | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :order
+- has_one_attached :image
 
 ## ordersテーブル
 
@@ -53,12 +53,14 @@
 
 ## addressesテーブル
 
-| postal_cord  | string     | null: false       |
-| prefectures  | string     | null: false       |
-| municipality | string     | null: false       |
-| house_number | string     | null: false       |
-| building     | string     |                   |
-| phone_number | string     | null: false       |
+| Column         | Type       | Options           |
+| -------------- | ---------- | ----------------- |
+| postal_cord    | string     | null: false       |
+| prefectures_id | integer    | null: false       |
+| municipality   | string     | null: false       |
+| house_number   | string     | null: false       |
+| building       | string     |                   |
+| phone_number   | string     | null: false       |
 
 ### Association
 
