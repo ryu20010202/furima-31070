@@ -8,10 +8,10 @@ class Item < ApplicationRecord
     validates :burden_id
     validates :area_id
     validates :day_id
-    validates :price
+    validates :price, format: { with: /\A(?=\d)\z/}, numericality: { :greater_than_or_equal_to => 300 }, :numericality => { :less_than_or_equal_to => 9999999 }
   end
 
-  - belongs_to :user
-  - has_one_attached :image
+  belongs_to :user
+  has_one_attached :image
 
 end
