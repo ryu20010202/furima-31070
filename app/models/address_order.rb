@@ -4,7 +4,7 @@ class AddressOrder
 
   with_options presence: true do
     validates :postal_cord, format: { with: /\A\d{3}-\d{4}\z/ }
-    validates :prefectures, { other_than: 1 }
+    validates :prefectures, numericality: { other_than: 1 }
     validates :municipality
     validates :house_number
     validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
