@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @order = Order.exists?(item_id: @item.id)
   end
 
   def edit
