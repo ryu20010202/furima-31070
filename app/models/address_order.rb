@@ -9,6 +9,8 @@ class AddressOrder
     validates :house_number
     validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
     validates :token
+    validates :item_id
+    validates :user_id
   end
 
   def save
