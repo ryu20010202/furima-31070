@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :access, only: :index
+
   def index
-    @address_order = AddressOrder.new
+      @address_order = AddressOrder.new
   end
 
   def create
@@ -32,5 +35,11 @@ class OrdersController < ApplicationController
         card: order_params[:token],    
         currency: 'jpy'                 
       )
+  end
+
+  def access
+    if Order.exists?(item_id: @item.id) || @item.user.id == current_user.id
+      redirect_to root_path
+    end
   end
 end
